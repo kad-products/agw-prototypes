@@ -49,9 +49,7 @@ jobs:
         uses: actions/configure-pages@v3
 
       - name: Build with Next.js
-        run: |
-          pnpm prep-posts
-          pnpm next build
+        run: pnpm next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
