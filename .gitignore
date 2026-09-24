@@ -1,6 +1,9 @@
 # Karen Boyd's framework content: local only, never commit
 content/real/
 
+# Artifacts from the chat session, has too much framework-adjacent content for now
+docs/*
+
 # Personal Claude Code settings
 .claude/settings.local.json
 
