@@ -1,0 +1,14 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+order: 1
+id: preserve
+color: '#c0392b'
+emoji: '🔴'
+name: Preserve
+short: Protect what exists — oppose changes that alter neighborhoods or built heritage.
+description: >
+  New development often destroys what makes a place worth living in. Historic buildings,
+  established streetscapes, and stable communities have real value that can't be rebuilt
+  once it's gone. The burden of proof is on those proposing change, not those resisting it.
+example: >
+  Opposing a rezoning that would replace a block of century-old rowhouses with a
+  mid-rise, even when the project includes affordable units.

@@ -1,0 +1,54 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+
+intro:
+  heading: Where do you stand on urban development?
+  body: >
+    Cities are changing fast — and the debates around development, housing, and
+    planning are rarely as simple as "build more" versus "keep it the same." Your
+    actual position is probably more specific than that. This takes about two
+    minutes and helps you see where you actually land.
+
+layer1:
+  question: Which of these best describes your general approach to urban development?
+  cta: This is where I am
+
+reflect:
+  heading: Positions Profile
+  goDeeper: >
+    These are the areas where your overall stance plays out differently. Tap any
+    area to set a position on it — or leave it and come back later.
+  valuesIntro: >
+    Your position on each area is below. Tap any to revisit it, or use
+    "+ Detail" to add more nuance to areas where your view is more complex.
+  unexploredLabel: Not explored
+
+layer2:
+  heading: Your stance on each area
+  instruction: >
+    For each area below, choose the stance that fits best. Skip anything you
+    haven't thought about or don't have a view on.
+  stancePrompt: "On this, I…"
+  skipLabel: Skip for now
+  doneLabel: See my full picture
+  progressLabel: "Area {current} of {total}"
+
+importance:
+  heading: How much does each area matter to you?
+  instruction: >
+    Use the slider to show how important this area is to your overall position.
+    If it genuinely doesn't factor in for you, mark it as such.
+  dontCareLabel: Doesn't factor into my position
+  doneLabel: Done
+
+layer2b:
+  heading: Positions on
+  instruction: >
+    Toggle all the positions that apply to this area. Use the slider to show
+    how much each one applies relative to the others.
+  weightLabel: "How much (1–100)"
+  clarifyLabel: Clarify this stance
+  editNotesLabel: Edit notes
+  modalStoryPlaceholder: "Reasoning, examples, or context (optional)"
+  modalSaveLabel: Save
+  modalCancelLabel: Cancel
+  doneLabel: Save and back to profile

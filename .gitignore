@@ -1,0 +1,15 @@
+# Karen Boyd's framework content: local only, never commit
+content/real/
+
+# Personal Claude Code settings
+.claude/settings.local.json
+
+# Dependencies and build output
+node_modules/
+dist/
+.DS_Store
+
+# Next.js
+.next/
+out/
+next-env.d.ts

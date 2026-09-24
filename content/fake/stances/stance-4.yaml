@@ -1,0 +1,15 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+order: 4
+id: trade-off
+color: '#1e8449'
+emoji: '🟢'
+name: Trade Off
+short: Back development in exchange for concrete community benefits.
+description: >
+  Development brings resources and opportunity — the question is whether the
+  community captures any of it. Negotiate hard: parks, affordable units, local
+  hiring, infrastructure upgrades. Let the project proceed if the deal is good
+  enough. If it isn't, hold out until it is.
+example: >
+  Approving a large mixed-use tower in exchange for a community land trust unit
+  commitment, a park improvement, and a contribution to a local jobs fund.

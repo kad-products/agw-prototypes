@@ -1,0 +1,15 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+order: 6
+id: advocate
+color: '#6c3483'
+emoji: '🟣'
+name: Advocate
+short: Change the rules, policies, and politics that shape how cities develop.
+description: >
+  The outcomes we get from planning aren't accidents — they reflect who holds power
+  and what the rules reward. The most effective work isn't showing up to hearings;
+  it's changing the zoning codes, the financing tools, the elected officials, and the
+  state laws that constrain what cities can do in the first place.
+example: >
+  Running a campaign to pass statewide zoning reform that removes single-family-only
+  restrictions, rather than fighting each upzoning application one at a time.

@@ -1,0 +1,15 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+order: 5
+id: rethink
+color: '#1a5276'
+emoji: '🔵'
+name: Rethink
+short: Push for fundamentally different approaches to how cities are built.
+description: >
+  The current planning system was designed around cars, private ownership, and
+  growth-as-default. Tinkering at the edges won't fix structural problems — housing
+  scarcity, car dependence, climate vulnerability. The work is to redesign the
+  underlying logic, not to argue about individual projects within a broken system.
+example: >
+  Advocating for land value taxation, community land trusts, and a transit-first
+  infrastructure budget rather than fighting project-by-project approval battles.

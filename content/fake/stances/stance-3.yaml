@@ -1,0 +1,15 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+order: 3
+id: limit
+color: '#b7950b'
+emoji: '🟡'
+name: Limit
+short: Allow change, but only within strict controls that protect existing residents.
+description: >
+  Some growth is inevitable, but that doesn't mean anything goes. Zoning rules,
+  design standards, affordability requirements, and community benefit agreements
+  are the tools that keep development from trampling people who are already here.
+  Change without guardrails isn't progress — it's displacement.
+example: >
+  Supporting upzoning only if it includes mandatory affordable set-asides, anti-
+  demolition protections, and design review with meaningful community input.

@@ -1,0 +1,15 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+order: 2
+id: study-first
+color: '#d35400'
+emoji: '🟠'
+name: Study First
+short: Understand the full impact before committing to major changes.
+description: >
+  Planning decisions have consequences that last decades. Before approving large
+  projects or policy shifts, cities should invest in proper impact studies — traffic,
+  schools, utilities, displacement — and give communities time to respond to what
+  they find. Moving fast on planning is how you get regret.
+example: >
+  Asking the city to commission a displacement study before voting on a transit-oriented
+  development plan, even if it delays the project by a year.

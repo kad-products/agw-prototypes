@@ -1,0 +1,15 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+order: 7
+id: drift
+color: '#626567'
+emoji: '⬛'
+name: No Strong View
+short: I don't follow urban planning closely or have a deliberate position on development.
+description: >
+  Urban planning affects daily life in real ways, but it's not something everyone
+  tracks. Maybe you've never engaged with a zoning hearing or a land use debate.
+  Maybe you have views on specific issues but no consistent approach. That's a
+  valid starting point.
+example: >
+  Living in a neighborhood that's changing, noticing it, but not having a clear
+  sense of whether you want it to go faster, slower, or differently.
