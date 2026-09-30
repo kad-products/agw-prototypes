@@ -22,6 +22,7 @@ If a request conflicts with the docs, say so before building. Don't quietly pick
 - **Accessibility:** WCAG 2.2 AA minimum, and AAA wherever feasible. Every visual element needs a text equivalent. Masked profanity needs an accessible label.
 - **No stance is framed as better.** This applies to copy, layout, color, and ordering.
 - **No pestering:** No completion meters, "unlock" language, or nudges to go deeper.
+- **No "done for now" exits.** Don't add buttons that say "I'm done for now" or navigate back to home mid-flow. Users can use the browser back button or the nav breadcrumb.
 
 ## Prototype Conventions
 

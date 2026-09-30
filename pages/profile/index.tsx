@@ -15,6 +15,7 @@ import {
   Text,
 } from '@radix-ui/themes'
 import { loadStances, loadValues, loadConceptContent } from '@/lib/content'
+import { useStepHistory } from '@/lib/useStepHistory'
 import type {
   StanceContent,
   ValueContent,
@@ -145,6 +146,7 @@ type SurveyAction =
   | { type: 'GO_TO_IMPORTANCE' }
   | { type: 'SET_VALUE_IMPORTANCE'; valueId: string; score: number | null; dontCare: boolean }
   | { type: 'FINISH_IMPORTANCE' }
+  | { type: 'RESTORE_STATE'; step: Step; currentValueIndex: number; detailValueId: string | null }
 
 function reducer(state: SurveyState, action: SurveyAction): SurveyState {
   switch (action.type) {
@@ -270,6 +272,15 @@ function reducer(state: SurveyState, action: SurveyAction): SurveyState {
     case 'FINISH_IMPORTANCE':
       return { ...state, step: 'reflect' }
 
+    case 'RESTORE_STATE':
+      return {
+        ...state,
+        step: action.step,
+        currentValueIndex: action.currentValueIndex,
+        detailValueId: action.detailValueId,
+        revisiting: false,
+      }
+
     default:
       return state
   }
@@ -287,9 +298,15 @@ function initialState(): SurveyState {
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
+function buildProfileQuery(state: SurveyState): Record<string, string> {
+  const q: Record<string, string> = { step: state.step }
+  if (state.step === 'layer2') q.v = String(state.currentValueIndex)
+  if (state.step === 'layer2b' && state.detailValueId) q.vid = state.detailValueId
+  return q
+}
+
 export default function SurveyPage({ stances, values, content }: Props) {
   const [state, dispatch] = useReducer(reducer, undefined, initialState)
-  const router = useRouter()
 
   // Auto-advance to reflect once all values have been stepped through.
   useEffect(() => {
@@ -298,13 +315,14 @@ export default function SurveyPage({ stances, values, content }: Props) {
     }
   }, [state.step, state.currentValueIndex, state.revisiting, values.length])
 
-  // Keep the URL in sync with state so individual views are linkable.
-  useEffect(() => {
-    const query: Record<string, string> = { step: state.step }
-    if (state.step === 'layer2') query.v = String(state.currentValueIndex)
-    if (state.step === 'layer2b' && state.detailValueId) query.vid = state.detailValueId
-    router.replace({ pathname: '/profile', query }, undefined, { shallow: true })
-  }, [state.step, state.currentValueIndex, state.detailValueId]) // eslint-disable-line react-hooks/exhaustive-deps
+  useStepHistory('/profile', buildProfileQuery(state), q =>
+    dispatch({
+      type: 'RESTORE_STATE',
+      step: (q.step as Step) ?? 'layer1',
+      currentValueIndex: parseInt((q.v as string) ?? '0'),
+      detailValueId: (q.vid as string) || null,
+    }),
+  )
 
   return (
     <Container size="2" px="4" py="8">

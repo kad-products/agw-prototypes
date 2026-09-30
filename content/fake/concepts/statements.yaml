@@ -1,0 +1,54 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+
+intro:
+  heading: Where do you stand on urban development?
+  body: >
+    Here are things people actually say about development, housing, and how cities
+    change. React to each one — agree, neutral, or disagree — or obstain if a statement feels too hard to react to at all. At the end, we'll show
+    you what your reactions suggest about where you stand and create a sort of "Position Profile" on urban development.
+
+reactions:
+  agreeLabel: Agree
+  neutralLabel: Neutral
+  disagreeLabel: Disagree
+  nextLabel: Next
+  doneLabel: See my position
+  skipNote: Skip any you'd rather not answer — leave the buttons untouched and move on.
+
+reflect:
+  heading: Here's what your reactions suggest
+  intro: >
+    Each statement you reacted to maps to a stance on a specific value area. Here's
+    how your responses break down — by stance and by value. Use the edit button on
+    any row to change a reaction.
+  tabStanceLabel: By stance
+  tabValueLabel: By value
+  editReactionLabel: Edit reaction
+  noAnswerLabel: No answer
+  layer2Cta: "Let's dig a little deeper"
+  revisitLayer2Cta: Revisit specific areas
+  unexploredLabel: Skipped
+
+layer2:
+  suggestedLabel: "Your reactions suggest:"
+  looksRightLabel: Looks right
+  changeLabel: Change
+  skipLabel: Skip for now
+  doneLabel: Done
+  reactModeIntro: "Here are the statements about this area — how do you feel about them?"
+  reactModeChangeIntro: "Here are the statements you reacted to — change anything that's off."
+  reactModeSuggestion: "Your reactions suggest:"
+  reactModeConfirmLabel: Confirm this
+
+layer2b:
+  heading: Positions on
+  instruction: >
+    Toggle all the positions that apply. Use the slider to show how much each one
+    applies relative to the others.
+  weightLabel: "How much (1–100)"
+  clarifyLabel: Clarify this stance
+  editNotesLabel: Edit notes
+  modalStoryPlaceholder: "Reasoning, examples, or context (optional)"
+  modalSaveLabel: Save
+  modalCancelLabel: Cancel
+  doneLabel: Save and back

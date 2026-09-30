@@ -8,6 +8,16 @@ export type ValueId = string
 
 // ─── Content types (loaded from YAML) ────────────────────────────────────────
 
+export interface StatementContent {
+  id: string
+  text: string
+  stanceId: StanceId
+  valueId: ValueId
+  page: number
+}
+
+export type Reaction = 'agree' | 'neutral' | 'disagree'
+
 export interface StanceContent {
   id: StanceId
   name: string

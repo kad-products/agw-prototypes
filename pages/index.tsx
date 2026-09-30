@@ -12,7 +12,7 @@ const concepts = [
   {
     slug: 'statements',
     name: 'Statement Reactions',
-    status: 'planned',
+    status: 'ready',
     description:
       'React to short real-world statements. The tool infers your stance and shows its reasoning.',
   },
