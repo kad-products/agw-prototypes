@@ -1,0 +1,19 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+id: historic-01
+valueId: value-c
+situation: >
+  A developer wants to demolish a 1920s warehouse to build a mixed-use tower.
+  The warehouse is not formally heritage-designated.
+choices:
+  - id: historic-01-a
+    text: Oppose demolition — the warehouse has irreplaceable historic value.
+    stanceId: preserve
+  - id: historic-01-b
+    text: Require an independent heritage assessment before any permit is issued.
+    stanceId: study-first
+  - id: historic-01-c
+    text: Allow demolition if the tower incorporates significant references to the original building.
+    stanceId: trade-off
+  - id: historic-01-d
+    text: Approve it — older buildings aren't inherently more valuable than new housing.
+    stanceId: advocate

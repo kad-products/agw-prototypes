@@ -1,0 +1,19 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+id: transport-04
+valueId: value-e
+situation: >
+  A transit agency proposes cutting service on a low-ridership bus route in order
+  to fund frequency improvements on high-ridership routes.
+choices:
+  - id: transport-04-a
+    text: Oppose it — low-ridership routes often serve people with no other option.
+    stanceId: preserve
+  - id: transport-04-b
+    text: Commission an equity and ridership analysis before cutting any route.
+    stanceId: study-first
+  - id: transport-04-c
+    text: Support the cut if the savings go directly to frequency improvements on key routes.
+    stanceId: trade-off
+  - id: transport-04-d
+    text: Redesign the entire network — the current routes reflect decades-old thinking.
+    stanceId: rethink

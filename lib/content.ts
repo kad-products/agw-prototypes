@@ -2,7 +2,7 @@
 import path from 'path'
 import fs from 'fs'
 import yaml from 'js-yaml'
-import type { StanceContent, ValueContent, StatementContent } from './types'
+import type { StanceContent, ValueContent, StatementContent, ScenarioContent } from './types'
 
 // Set CONTENT_SET=real to load Karen's framework content (local only).
 // Defaults to 'fake' so the app always runs without the real content present.
@@ -35,6 +35,10 @@ export function loadValues(): ValueContent[] {
 
 export function loadStatements(): StatementContent[] {
   return loadDir<StatementContent>('statements')
+}
+
+export function loadScenarios(): ScenarioContent[] {
+  return loadDir<ScenarioContent>('scenarios')
 }
 
 export function loadConceptContent<T>(concept: string): T {

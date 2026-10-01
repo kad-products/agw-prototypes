@@ -1,0 +1,19 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+id: housing-01
+valueId: value-a
+situation: >
+  A developer proposes a 12-story apartment building on a site currently occupied
+  by a one-story commercial strip.
+choices:
+  - id: housing-01-a
+    text: Oppose it — too tall and out of scale for this street.
+    stanceId: preserve
+  - id: housing-01-b
+    text: Support it with a height cap — six stories at most.
+    stanceId: limit
+  - id: housing-01-c
+    text: Support it if 20% of units are below-market rate.
+    stanceId: trade-off
+  - id: housing-01-d
+    text: Support it as proposed — height restrictions are part of the housing problem.
+    stanceId: advocate

@@ -1,0 +1,19 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+id: checkin-01
+situation: >
+  A tech company announces plans to open a large campus in a mixed neighborhood —
+  bringing 5,000 jobs but requiring demolition of a block of existing businesses
+  and homes.
+choices:
+  - id: checkin-01-a
+    text: Block it — what gets demolished can't be replaced.
+    stanceId: preserve
+  - id: checkin-01-b
+    text: Put it on hold pending a full community impact assessment.
+    stanceId: study-first
+  - id: checkin-01-c
+    text: Negotiate conditions — job guarantees, community benefit, some units preserved.
+    stanceId: trade-off
+  - id: checkin-01-d
+    text: Approve it — the jobs and investment are worth it.
+    stanceId: advocate

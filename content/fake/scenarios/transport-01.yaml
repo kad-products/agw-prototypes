@@ -1,0 +1,19 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+id: transport-01
+valueId: value-e
+situation: >
+  The city proposes removing one lane of on-street parking on a commercial street
+  to install a protected bike lane.
+choices:
+  - id: transport-01-a
+    text: Oppose it — parking is essential for local businesses and already scarce.
+    stanceId: preserve
+  - id: transport-01-b
+    text: Require a parking utilization study before removing any spaces.
+    stanceId: study-first
+  - id: transport-01-c
+    text: Support it if the city provides replacement parking or a business compensation fund.
+    stanceId: trade-off
+  - id: transport-01-d
+    text: Back it — bike infrastructure has a better track record on commercial streets than parking does.
+    stanceId: advocate

@@ -1,0 +1,19 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+id: historic-04
+valueId: value-c
+situation: >
+  A proposal would let owners add two-story additions to heritage-listed homes without
+  design review, on the basis that review slows down necessary construction.
+choices:
+  - id: historic-04-a
+    text: Oppose it — design review is what keeps heritage designations meaningful.
+    stanceId: preserve
+  - id: historic-04-b
+    text: Audit the current review process first to see if streamlining is actually needed.
+    stanceId: study-first
+  - id: historic-04-c
+    text: Allow additions without review only if they meet strict height and setback rules.
+    stanceId: limit
+  - id: historic-04-d
+    text: Support it — owners shouldn't need approval to improve their own designated homes.
+    stanceId: advocate

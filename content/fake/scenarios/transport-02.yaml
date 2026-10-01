@@ -1,0 +1,19 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+id: transport-02
+valueId: value-e
+situation: >
+  A proposal would eliminate the requirement for new residential and commercial
+  buildings to include a minimum number of parking spaces.
+choices:
+  - id: transport-02-a
+    text: Oppose it — parking minimums keep buildings accessible to people who drive.
+    stanceId: preserve
+  - id: transport-02-b
+    text: Apply it as a pilot in areas with strong transit access before going citywide.
+    stanceId: study-first
+  - id: transport-02-c
+    text: Eliminate minimums downtown only, keep them in areas without good transit.
+    stanceId: limit
+  - id: transport-02-d
+    text: Eliminate them everywhere — parking minimums drive up construction costs and car dependency.
+    stanceId: advocate

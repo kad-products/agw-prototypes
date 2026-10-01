@@ -75,3 +75,18 @@ export interface Position {
   valueImportances?: Record<ValueId, ValueImportance>
   valueDetails?: Record<ValueId, ValueDetail>
 }
+
+// ─── Scenario content (adventure concept) ────────────────────────────────────
+
+export interface ScenarioChoice {
+  id: string
+  text: string
+  stanceId: StanceId
+}
+
+export interface ScenarioContent {
+  id: string
+  valueId?: ValueId  // absent = check-in scenario (contributes to overall stance only)
+  situation: string
+  choices: ScenarioChoice[]
+}

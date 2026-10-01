@@ -1,0 +1,19 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+id: historic-03
+valueId: value-c
+situation: >
+  An old industrial waterfront is being redeveloped. A few structures could be
+  retained; the rest would be demolished to make way for housing and public space.
+choices:
+  - id: historic-03-a
+    text: Keep as many structures as possible — the industrial character defines this area.
+    stanceId: preserve
+  - id: historic-03-b
+    text: Retain the most significant buildings but allow demolition where needed for housing.
+    stanceId: trade-off
+  - id: historic-03-c
+    text: Proceed with demolition — the area's future matters more than its industrial past.
+    stanceId: advocate
+  - id: historic-03-d
+    text: Mandate an adaptive reuse study for every building before any demolition is approved.
+    stanceId: rethink

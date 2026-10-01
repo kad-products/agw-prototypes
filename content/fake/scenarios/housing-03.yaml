@@ -1,0 +1,19 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+id: housing-03
+valueId: value-a
+situation: >
+  A vacant downtown office tower could be converted into about 400 apartments
+  under a new city program.
+choices:
+  - id: housing-03-a
+    text: Support conversion, but only if the building's original character is preserved.
+    stanceId: preserve
+  - id: housing-03-b
+    text: Support it with conditions — a mix of unit sizes and price points.
+    stanceId: trade-off
+  - id: housing-03-c
+    text: Back it fully — empty offices becoming homes is exactly the right direction.
+    stanceId: advocate
+  - id: housing-03-d
+    text: Push for a broader office-district redesign, not just a single conversion.
+    stanceId: rethink

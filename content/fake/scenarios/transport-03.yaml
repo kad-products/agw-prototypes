@@ -1,0 +1,19 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+id: transport-03
+valueId: value-e
+situation: >
+  The city wants to close a major arterial street to car traffic on weekend afternoons,
+  opening it for pedestrians and cyclists.
+choices:
+  - id: transport-03-a
+    text: Oppose it — this route serves too many people and the disruption isn't worth it.
+    stanceId: preserve
+  - id: transport-03-b
+    text: Run a three-month pilot before making any permanent change.
+    stanceId: study-first
+  - id: transport-03-c
+    text: Close a shorter section — two or three blocks — and expand only if that works.
+    stanceId: limit
+  - id: transport-03-d
+    text: Back a full closure — cities that have done this have seen the surrounding area transform.
+    stanceId: advocate

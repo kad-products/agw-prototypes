@@ -1,0 +1,70 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+
+specialists:
+  - value-a
+  - value-c
+  - value-e
+
+intro:
+  heading: Which way would you go?
+  body: >
+    Urban development is full of real decisions — not just opinions about them.
+    Walk through a few situations and see where your gut actually takes you.
+    Takes about five minutes.
+
+checkin:
+  heading: First, a gut check
+  hottake:
+    question: When it comes to development and change in your city, which of these feels closest to your instinct?
+    options:
+      - id: ht-preserve
+        text: Hard stop — what we have is worth protecting
+        stanceId: preserve
+      - id: ht-study-first
+        text: Slow down — this needs more evidence before anything changes
+        stanceId: study-first
+      - id: ht-limit
+        text: Careful change — some is needed but it should be gradual
+        stanceId: limit
+      - id: ht-trade-off
+        text: Worth the trade-offs — some things have to give for progress
+        stanceId: trade-off
+      - id: ht-advocate
+        text: Build and change — the status quo is the bigger problem
+        stanceId: advocate
+      - id: ht-rethink
+        text: Start over — cities need to be redesigned, not just tweaked
+        stanceId: rethink
+  scenarios:
+    progressLabel: "Situation {current} of {total}"
+    chooseLabel: What would you do?
+    nextLabel: Next
+    doneLabel: See where I stand
+  reflect:
+    heading: Here's your gut take
+    intro: >
+      Based on your choices, this is roughly where you land overall. You'll test
+      this against specific areas next — or stop here if that's enough.
+    ctaLabel: Explore specific areas
+    overallLabel: Overall stance
+
+examroom:
+  heading: Your positions so far
+  unexploredLabel: Not explored
+  overallLabel: Overall
+  suggestionLabel: Start here
+  surpriseIntro: One thing that stands out
+
+specialist:
+  backLabel: "← Overview"
+  progressLabel: "Situation {current} of {total}"
+  chooseLabel: What would you do?
+  nextLabel: Next
+  finishLabel: See what this suggests
+  reflect:
+    heading: What your choices suggest
+    suggestedLabel: "Your choices here suggest:"
+    looksRightLabel: That fits
+    changeLabel: Change it
+    skipLabel: Skip for now
+    changeHeading: Choose a different stance

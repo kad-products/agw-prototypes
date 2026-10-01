@@ -1,0 +1,19 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+id: housing-04
+valueId: value-a
+situation: >
+  A proposal would let any single-family homeowner in the city convert their home
+  into a triplex without a rezoning application.
+choices:
+  - id: housing-04-a
+    text: Oppose it — this changes the character of residential neighbourhoods too broadly.
+    stanceId: preserve
+  - id: housing-04-b
+    text: Pilot it in a few neighbourhoods first and assess before expanding citywide.
+    stanceId: study-first
+  - id: housing-04-c
+    text: Support it only in areas near transit and services, not everywhere.
+    stanceId: limit
+  - id: housing-04-d
+    text: Back it citywide — small-scale infill is some of the least disruptive densification.
+    stanceId: advocate

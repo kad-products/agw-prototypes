@@ -1,0 +1,19 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+id: historic-02
+valueId: value-c
+situation: >
+  A heritage conservation district is proposed for a block of 19th-century rowhouses.
+  Owners would need city approval for most exterior changes.
+choices:
+  - id: historic-02-a
+    text: Back it fully — protecting this block is worth constraining future changes.
+    stanceId: preserve
+  - id: historic-02-b
+    text: Support it only if owners keep full freedom to renovate interiors and make essential repairs.
+    stanceId: limit
+  - id: historic-02-c
+    text: Wait and see how the designation affects property values before expanding it.
+    stanceId: study-first
+  - id: historic-02-d
+    text: Oppose it — heritage designations restrict supply and push up prices on everything nearby.
+    stanceId: advocate

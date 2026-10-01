@@ -1,0 +1,18 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+id: checkin-02
+situation: >
+  The city proposes replacing a large surface parking lot downtown with a mix of
+  housing, retail, and a small park.
+choices:
+  - id: checkin-02-a
+    text: Oppose it — parking availability matters and this will make things worse.
+    stanceId: preserve
+  - id: checkin-02-b
+    text: Support it if the project includes replacement parking nearby.
+    stanceId: limit
+  - id: checkin-02-c
+    text: Commission a parking demand study before deciding.
+    stanceId: study-first
+  - id: checkin-02-d
+    text: Approve it — parking lots are exactly what should be replaced.
+    stanceId: advocate

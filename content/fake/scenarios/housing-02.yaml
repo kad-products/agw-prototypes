@@ -1,0 +1,19 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+id: housing-02
+valueId: value-a
+situation: >
+  A neighborhood association is lobbying the city to rezone a mixed residential
+  area to allow only single-family homes going forward.
+choices:
+  - id: housing-02-a
+    text: Support the rezoning — it protects the neighborhood's existing scale.
+    stanceId: preserve
+  - id: housing-02-b
+    text: Commission a housing impact study before any rezoning.
+    stanceId: study-first
+  - id: housing-02-c
+    text: Oppose a full downzone but limit new density to low-rise multifamily.
+    stanceId: limit
+  - id: housing-02-d
+    text: Oppose it firmly — single-family-only zoning keeps cities unaffordable.
+    stanceId: advocate

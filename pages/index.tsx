@@ -19,7 +19,7 @@ const concepts = [
   {
     slug: 'adventure',
     name: 'Choose Your Own Adventure',
-    status: 'planned',
+    status: 'ready',
     description:
       'Steer through scenarios. Layer-by-layer reflection that you control.',
   },
