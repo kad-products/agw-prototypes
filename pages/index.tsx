@@ -26,7 +26,7 @@ const concepts = [
   {
     slug: 'character',
     name: 'Character Builder',
-    status: 'planned',
+    status: 'ready',
     description:
       'Build a character that represents your position. Choose a persona, set attributes, add backstory.',
   },

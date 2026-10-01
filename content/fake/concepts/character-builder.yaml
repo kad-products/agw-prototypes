@@ -1,0 +1,173 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+
+personasEnabled: true
+
+intro:
+  heading: Build your character
+  body: >
+    Choose a persona that feels closest to your gut take on urban development,
+    then shape the details across specific areas. At the end you'll have a
+    character sheet — yours to keep or share.
+
+gallery:
+  heading: Choose your persona
+
+personas:
+  - id: persona-archivist
+    stanceId: preserve
+    name: The Archivist
+    tagline: What exists has value that's hard to rebuild
+    description: >
+      You see the buildings, streets, and communities that already exist as
+      carrying something irreplaceable — history, character, relationships.
+      Change destroys things that can't be recreated. The burden of proof
+      belongs to those proposing it.
+
+  - id: persona-researcher
+    stanceId: study-first
+    name: The Researcher
+    tagline: The right move follows the right evidence
+    description: >
+      You want action, but you want it to be correct. Moving fast means
+      missing things that matter — community impacts, second-order effects,
+      unintended consequences. You'd rather wait and know than move and regret.
+
+  - id: persona-planner
+    stanceId: limit
+    name: The Planner
+    tagline: Change with guardrails — not too fast, not too far
+    description: >
+      You accept that cities need to evolve, but unmanaged change causes real
+      harm. Careful, incremental steps beat sweeping moves. You believe in
+      guardrails and transitions, not revolutions.
+
+  - id: persona-mediator
+    stanceId: trade-off
+    name: The Mediator
+    tagline: Nothing good happens without some give and take
+    description: >
+      Competing interests are all legitimate. Getting anything done means
+      acknowledging trade-offs honestly and negotiating through them. You're
+      comfortable holding complexity.
+
+  - id: persona-futurist
+    stanceId: rethink
+    name: The Futurist
+    tagline: The system itself needs redesigning, not just amending
+    description: >
+      The real problem isn't any specific proposal — it's the frameworks and
+      assumptions underneath them. You want to redesign the system, not
+      optimize it. Incremental improvements won't get where we need to go.
+
+  - id: persona-builder
+    stanceId: advocate
+    name: The Builder
+    tagline: More change, faster — the status quo is the actual problem
+    description: >
+      Inaction is the real risk. Affordable housing, sustainable transit,
+      livable cities — none of it happens at the current pace. The status quo
+      isn't neutral; it's a choice, and it has consequences.
+
+  - id: persona-wanderer
+    stanceId: drift
+    name: The Wanderer
+    tagline: Still watching — but someone else is deciding in the meantime
+    description: >
+      You haven't landed anywhere yet, and you're not ready to. That's honest.
+      But not having a position doesn't mean nothing happens — it means others
+      are making choices that affect you. The Wanderer is a real place to be,
+      for now.
+
+attributes:
+  headingTemplate: "Shape {name}'s attributes"
+  intro: >
+    Your attributes are pre-set based on your persona. Change any that don't
+    fit — click a stance to choose it, or click an already-selected one to
+    leave that area unexplored.
+  confirmLabel: Build my character
+
+attributeGroups:
+  - id: group-housing
+    name: Housing
+    valueIds: [value-a, value-b]
+    snippets:
+      preserve: "Protect existing housing, resist new development"
+      study-first: "Study displacement before adding more units"
+      limit: "Build only with strong affordability rules"
+      trade-off: "More units, but negotiate what's affordable"
+      rethink: "Rethink land ownership and housing entirely"
+      advocate: "Change zoning laws, not just individual projects"
+      drift: "Not sure what the right housing approach is"
+
+  - id: group-character
+    name: Character
+    valueIds: [value-c, value-h]
+    snippets:
+      preserve: "Old streets and buildings are worth protecting"
+      study-first: "Test changes before they become irreversible"
+      limit: "Design rules keep change from erasing neighborhoods"
+      trade-off: "Some change is fine if the place still feels itself"
+      rethink: "Character comes from people, not old buildings"
+      advocate: "Community, not developers, should define a place"
+      drift: "Haven't thought much about neighborhood identity"
+
+  - id: group-environment
+    name: Environment
+    valueIds: [value-d, value-g]
+    snippets:
+      preserve: "Keep parks and green space from being built over"
+      study-first: "Environmental review before any major development"
+      limit: "Mandate green standards before approving projects"
+      trade-off: "Accept density in exchange for real green upgrades"
+      rethink: "Climate resilience requires redesigning how we build"
+      advocate: "Push policies that make green cities the default"
+      drift: "No strong views on environment tradeoffs"
+
+  - id: group-mobility
+    name: Mobility
+    valueIds: [value-e, value-k]
+    snippets:
+      preserve: "Don't remove roads or parking people depend on"
+      study-first: "Model traffic and transit before changing anything"
+      limit: "Expand transit carefully, don't harm existing drivers"
+      trade-off: "Trade parking for real transit investment"
+      rethink: "Design cities for walking and transit, not cars"
+      advocate: "Change funding rules so transit gets prioritized"
+      drift: "No strong take on how the city should move"
+
+  - id: group-equity
+    name: People
+    valueIds: [value-i, value-j]
+    snippets:
+      preserve: "Stability protects existing residents from harm"
+      study-first: "Understand who gets displaced before acting"
+      limit: "Require anti-displacement protections in all projects"
+      trade-off: "Development is fine if equity gains are concrete"
+      rethink: "The system is designed to exclude — redesign it"
+      advocate: "Fight for policy change, not just project-level fixes"
+      drift: "Aware of equity issues but no clear position"
+
+  - id: group-governance
+    name: Governance
+    valueIds: [value-f, value-l, value-m]
+    snippets:
+      preserve: "Keep community voice central, slow decisions down"
+      study-first: "Full transparency and open data before any vote"
+      limit: "Rules must hold developers accountable to communities"
+      trade-off: "Compromise works when both sides negotiate honestly"
+      rethink: "Reform who holds power over land, not just process"
+      advocate: "Change the laws that shape what cities can do"
+      drift: "Not engaged with how planning decisions get made"
+
+sheet:
+  classLabel: Class
+  attributesHeading: Attributes
+  unexploredLabel: "—"
+  unexploredSummary: "{count} area unexplored"
+  unexploredSummaryPlural: "{count} areas unexplored"
+  gapIntro: "Interesting — your attributes tell a slightly different story from your persona."
+  gapSuggestedLabel: "Your attribute choices mostly suggest:"
+  keepPersonaLabel: Keep my persona
+  swapPersonaLabel: "Switch to {name}"
+  shareLabel: Share this character
+  shareCopiedLabel: Copied!
