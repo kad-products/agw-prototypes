@@ -33,7 +33,7 @@ const concepts = [
   {
     slug: 'map',
     name: 'Map',
-    status: 'planned',
+    status: 'ready',
     description:
       'A spatial experience that reveals as you go. Reflection happens continuously, not at the end.',
   },

@@ -1,0 +1,124 @@
+# FAKE CONTENT — invented for prototype testing only. Not Karen Boyd's framework.
+
+hottake:
+  heading: What's your gut take on urban development?
+  prompt: Start with your instinct — you can map the details after.
+
+map:
+  centerLabel: Overall
+
+reflect:
+  divergedIntro: Your map is telling a different story.
+  divergedBody: >
+    You called yourself {overall} overall, but most of your specific choices
+    cluster around {dominant}.
+  keepLabel: Keep {overall}
+  switchLabel: Switch to {dominant}
+
+# What each stance means in the context of a specific value.
+# Keyed by stance id, then value id. Falls back to stance.short if missing.
+stanceOnValue:
+  preserve:
+    value-a: "Oppose rezoning that increases neighborhood density"
+    value-b: "Stable supply protects existing residents from rent pressure"
+    value-c: "Prioritize keeping historic buildings and streetscapes intact"
+    value-d: "Block projects that remove trees or reduce park access"
+    value-e: "Preserve existing street patterns, parking, and car access"
+    value-f: "Protect established businesses from development-driven displacement"
+    value-g: "Existing green infrastructure is worth more than new builds"
+    value-h: "The social fabric of a place should be protected from change"
+    value-i: "Familiar streets and stable communities make neighborhoods safer"
+    value-j: "Protecting long-term residents from displacement is the priority"
+    value-k: "Don't let growth outpace what the infrastructure can handle"
+    value-l: "Existing community voices and processes deserve respect"
+    value-m: "Current zoning reflects community decisions worth preserving"
+
+  study-first:
+    value-a: "Commission displacement studies before approving density changes"
+    value-b: "Model rent impacts before upzoning goes to a vote"
+    value-c: "Survey heritage value before issuing any demolition permit"
+    value-d: "Measure tree canopy loss before approving site plans"
+    value-e: "Model traffic and transit effects before breaking ground"
+    value-f: "Analyze who captures economic benefit before proceeding"
+    value-g: "Require full climate and environmental impact studies first"
+    value-h: "Assess community character impacts before any major change"
+    value-i: "Study design-safety relationships before altering street patterns"
+    value-j: "Map displacement risk before making any land use decision"
+    value-k: "Assess infrastructure capacity gaps before permitting more growth"
+    value-l: "Share studies with communities before any vote happens"
+    value-m: "Review how rezoning ripples through surrounding areas first"
+
+  limit:
+    value-a: "Allow density only with strong affordability requirements attached"
+    value-b: "Mandate affordable units in every project, no exceptions"
+    value-c: "Permit renovation but not demolition of significant buildings"
+    value-d: "Require one-for-one tree replacement and park setbacks"
+    value-e: "New development must demonstrably improve transit access"
+    value-f: "Require local hiring agreements and small business protections"
+    value-g: "Strict emissions and stormwater standards on all new builds"
+    value-h: "Design standards must respect and reflect neighborhood character"
+    value-i: "Safety improvements required as a condition of development"
+    value-j: "Anti-displacement protections must accompany any upzoning"
+    value-k: "Growth only where existing infrastructure can actually support it"
+    value-l: "Community input must be binding, not just advisory"
+    value-m: "Strict design and use controls on any rezoned parcels"
+
+  trade-off:
+    value-a: "Approve density in exchange for meaningful affordable set-asides"
+    value-b: "Use developer fees and linkage to fund affordable housing"
+    value-c: "Allow new construction if key heritage elements are retained"
+    value-d: "Require parks funding and green amenities as part of the deal"
+    value-e: "Developers fund transit improvements in exchange for density bonuses"
+    value-f: "Capture development value and redirect it to local residents"
+    value-g: "Green infrastructure as a required condition of project approval"
+    value-h: "Community benefit funds protect local culture and character"
+    value-i: "Safety infrastructure upgrades as conditions of new development"
+    value-j: "Community land trust units as part of every major deal"
+    value-k: "Developer contributions to infrastructure upgrades, not just fees"
+    value-l: "Community benefit agreements give residents real negotiating power"
+    value-m: "Rezone if the deal includes genuine community benefit"
+
+  rethink:
+    value-a: "Community land trusts and social housing over private speculation"
+    value-b: "De-commodify housing through land value reform and public ownership"
+    value-c: "Reclaim historic spaces for community use, not just tourism"
+    value-d: "Redesign urban layout to put green space at the center"
+    value-e: "End car dependence by redesigning cities around transit"
+    value-f: "Redirect development value toward community ownership structures"
+    value-g: "Climate resilience requires fundamentally changing how cities grow"
+    value-h: "Protect culture through ownership models, not just design rules"
+    value-i: "Redesign streets and density to make safety structural, not reactive"
+    value-j: "Structural redistribution, not project-by-project negotiation"
+    value-k: "Public infrastructure investment as the foundation for city growth"
+    value-l: "Reform who holds power in planning, not just the process"
+    value-m: "Land value taxation and public ownership over private zoning rules"
+
+  advocate:
+    value-a: "Pass state zoning reform to allow housing to be built by right"
+    value-b: "Change the financing laws and tools that price people out"
+    value-c: "Reform preservation law to center living communities, not facades"
+    value-d: "Mandate green space minimums in state and local zoning codes"
+    value-e: "Lobby for transit funding and road diet legislation"
+    value-f: "Push for policies that direct investment to existing residents"
+    value-g: "Advocate for binding climate standards embedded in planning law"
+    value-h: "Change zoning to protect cultural uses and community spaces by right"
+    value-i: "Reform safety-related design standards and policing through legislation"
+    value-j: "Change the laws and systems that enable displacement"
+    value-k: "Advocate for public infrastructure funding, not developer-led patchwork"
+    value-l: "Reform planning law to give communities real decision-making power"
+    value-m: "Repeal exclusionary single-family zoning restrictions statewide"
+
+  drift:
+    value-a: "No strong view on how much or what kind of housing to build"
+    value-b: "Haven't thought through the affordability tradeoffs"
+    value-c: "No clear position on preservation versus new development"
+    value-d: "Not sure how to weigh green space against other priorities"
+    value-e: "No strong view on transit versus cars and roads"
+    value-f: "Not sure what economic priorities I'd support here"
+    value-g: "Haven't formed a clear position on environmental tradeoffs"
+    value-h: "Not sure what I'd protect or change about neighborhoods"
+    value-i: "No strong view on safety and urban design"
+    value-j: "Not sure how to prioritize equity in planning decisions"
+    value-k: "No clear view on how infrastructure and growth should relate"
+    value-l: "Not sure what meaningful civic participation should look like"
+    value-m: "No strong view on zoning and land use rules"
