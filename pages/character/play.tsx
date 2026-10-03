@@ -224,6 +224,7 @@ function PersonaGallery({
               return (
                 <button
                   key={persona.id}
+                  type="button"
                   onClick={() => onSelect(persona)}
                   style={{
                     width: 190,
@@ -419,10 +420,10 @@ function ValueGroupNode({
 }) {
   const [hoveredStanceId, setHoveredStanceId] = useState<string | null>(null)
 
-  const nodeR = 80
-  const chipR = 60
+  const nodeR = 100
+  const chipR = 80
   const chipSize = 26
-  const innerD = 80
+  const innerD = 120
 
   const selectedStance = selectedStanceId
     ? stances.find(s => s.id === selectedStanceId) ?? null
@@ -528,8 +529,8 @@ function ValueGroupNode({
         {snippet && (
           <span
             style={{
-              fontSize: 9,
-              lineHeight: 1.35,
+              fontSize: 12,
+              lineHeight: 1.25,
               color: displayStance?.color ?? 'var(--gray-11)',
               fontStyle: 'italic',
             }}
