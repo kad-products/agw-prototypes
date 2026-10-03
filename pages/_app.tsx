@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { Theme, Box, Flex, Text } from '@radix-ui/themes'
+import { HomeIcon } from '@radix-ui/react-icons'
 import '@/styles/globals.css'
 
 const CONCEPT_NAMES: Record<string, string> = {
@@ -14,8 +15,11 @@ const CONCEPT_NAMES: Record<string, string> = {
 
 function TopNav() {
   const router = useRouter()
-  const conceptKey = '/' + router.pathname.split('/')[1]
+  const segments = router.pathname.split('/')
+  const conceptKey = '/' + segments[1]
   const conceptName = CONCEPT_NAMES[conceptKey]
+  const isOnPlayPage = segments[2] === 'play'
+  const isHome = router.pathname === '/'
 
   return (
     <Box
@@ -28,13 +32,31 @@ function TopNav() {
     >
       <Flex align="center" justify="between">
         <Flex align="center" gap="2">
-          <Link href="/" style={{ textDecoration: 'none' }}>
-            <Text as="span" size="1" color="gray">Prototypes</Text>
+          <Link
+            href="/"
+            aria-label="Home"
+            style={{ textDecoration: 'none', color: 'var(--gray-9)', display: 'flex', alignItems: 'center' }}
+          >
+            <HomeIcon />
           </Link>
+          {!isHome && (
+            <>
+              <Text as="span" size="1" color="gray">/</Text>
+              <Link href="/prototypes" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
+                <Text as="span" size="1" color="gray">Prototypes</Text>
+              </Link>
+            </>
+          )}
           {conceptName && (
             <>
               <Text as="span" size="1" color="gray">/</Text>
-              <Text as="span" size="1" color="gray" weight="medium">{conceptName}</Text>
+              {isOnPlayPage ? (
+                <Link href={conceptKey} style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
+                  <Text as="span" size="1" color="gray" weight="medium">{conceptName}</Text>
+                </Link>
+              ) : (
+                <Text as="span" size="1" color="gray" weight="medium">{conceptName}</Text>
+              )}
             </>
           )}
         </Flex>

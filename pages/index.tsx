@@ -1,95 +1,54 @@
-import { Box, Container, Flex, Heading, Text, Card, Badge } from '@radix-ui/themes'
+import { Box, Button, Container, Flex, Heading, Text } from '@radix-ui/themes'
 import Link from 'next/link'
-
-const concepts = [
-  {
-    slug: 'profile',
-    name: 'Position Profile Creator',
-    status: 'ready',
-    description:
-      'Pick a stance directly and build out your position across specific areas.',
-  },
-  {
-    slug: 'statements',
-    name: 'Statement Reactions',
-    status: 'ready',
-    description:
-      'React to short real-world statements. The tool infers your stance and shows its reasoning.',
-  },
-  {
-    slug: 'adventure',
-    name: 'Choose Your Own Adventure',
-    status: 'ready',
-    description:
-      'Steer through scenarios. Layer-by-layer reflection that you control.',
-  },
-  {
-    slug: 'character',
-    name: 'Character Builder',
-    status: 'ready',
-    description:
-      'Build a character that represents your position. Choose a persona, set attributes, add backstory.',
-  },
-  {
-    slug: 'map',
-    name: 'Map',
-    status: 'ready',
-    description:
-      'A spatial experience that reveals as you go. Reflection happens continuously, not at the end.',
-  },
-]
 
 export default function Home() {
   return (
     <Container size="2" px="4" py="8">
-      <Flex direction="column" gap="2" mb="7">
-        <Heading size="7">AI Positions Map — Prototypes</Heading>
-        <Text color="gray" size="2">
-          Phase 1 · Running on fake content · Private
-        </Text>
-      </Flex>
+      <Flex direction="column" gap="6">
+        <Flex direction="column" gap="3">
+          <Heading size="7">AI Positions Map</Heading>
+          <Text as="p" size="3" style={{ lineHeight: '1.7' }}>
+            Most people have a hot take on AI. This is a tool to get past that
+            — to help someone figure out where they actually stand across the
+            things that actually matter to them: privacy, job security, accuracy,
+            creativity, trust. The output is a position with some shape to it,
+            not a score.
+          </Text>
+          <Text as="p" size="3" style={{ lineHeight: '1.7' }}>
+            It&rsquo;s built on a published framework of stances and values —
+            seven positions people actually take on AI, and thirteen values where
+            those positions play out. No stance is right.
+          </Text>
+        </Flex>
 
-      <Flex direction="column" gap="3">
-        {concepts.map(c => (
-          <Card key={c.slug} asChild={c.status === 'ready'}>
-            {c.status === 'ready' ? (
-              <Link href={`/${c.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                <ConceptCard {...c} />
-              </Link>
-            ) : (
-              <ConceptCard {...c} />
-            )}
-          </Card>
-        ))}
+        <Box
+          style={{
+            borderLeft: '3px solid var(--gray-5)',
+            paddingLeft: 'var(--space-4)',
+          }}
+        >
+          <Text size="2" color="gray" style={{ lineHeight: '1.7' }}>
+            <strong style={{ color: 'var(--gray-12)' }}>
+              The content here is invented.
+            </strong>{' '}
+            Placeholder stances and values with the right shape, not real
+            framework behind them. Real content comes later, once the UX is
+            worth filling in.
+          </Text>
+        </Box>
+
+        <Text as="p" size="3" style={{ lineHeight: '1.7' }}>
+          These are five different approaches to the same thing. Try one or two.
+          I want to know: does the approach make sense? Does the reflect-back at
+          the end tell you something? Where does it fall apart?
+        </Text>
+
+        <Box>
+          <Button size="3" asChild>
+            <Link href="/prototypes">See the prototypes</Link>
+          </Button>
+        </Box>
       </Flex>
     </Container>
-  )
-}
-
-function ConceptCard({
-  name,
-  status,
-  description,
-}: {
-  name: string
-  status: string
-  description: string
-}) {
-  return (
-    <Flex justify="between" align="start" gap="4">
-      <Box>
-        <Flex align="center" gap="2" mb="1">
-          <Text weight="medium">{name}</Text>
-          {status === 'planned' && (
-            <Badge color="gray" variant="soft" size="1">
-              planned
-            </Badge>
-          )}
-        </Flex>
-        <Text color="gray" size="2">
-          {description}
-        </Text>
-      </Box>
-    </Flex>
   )
 }
