@@ -611,14 +611,24 @@ function ExamRoom({
   // First unvisited specialist (for "Start here" suggestion).
   const firstUnvisited = specialists.find(v => !spv[v.id])
 
-  // Surprise: find a specialist whose stance diverges from the overall stance.
-  const surpriseValue = position.overallStance
-    ? specialists.find(v => {
+  // Surprise: find all specialists whose stance diverges from the overall stance,
+  // grouped by stance so the callout can read naturally ("chose X on A and B").
+  const surpriseValues = position.overallStance
+    ? specialists.filter(v => {
         const s = spv[v.id]
         return s && s !== 'unexplored' && s !== position.overallStance
       })
-    : null
-  const surpriseStance = surpriseValue ? stances.find(s => s.id === spv[surpriseValue.id]) : null
+    : []
+
+  const surpriseGroups: Array<{ stance: StanceContent; values: ValueContent[] }> = []
+  for (const v of surpriseValues) {
+    const sid = spv[v.id]
+    const stance = stances.find(s => s.id === sid)
+    if (!stance) continue
+    const existing = surpriseGroups.find(g => g.stance.id === sid)
+    if (existing) existing.values.push(v)
+    else surpriseGroups.push({ stance, values: [v] })
+  }
 
   return (
     <Flex direction="column" gap="6">
@@ -635,7 +645,7 @@ function ExamRoom({
       )}
 
       {/* Surprise callout */}
-      {surpriseValue && surpriseStance && overallStance && (
+      {surpriseGroups.length > 0 && overallStance && (
         <div
           style={{
             background: 'var(--amber-2)',
@@ -648,9 +658,25 @@ function ExamRoom({
             {content.examroom.surpriseIntro}
           </Text>
           <Text size="2" color="gray" style={{ lineHeight: '1.5' }}>
-            You lean <strong>{overallStance.name}</strong> overall, but on{' '}
-            <strong>{surpriseValue.name}</strong> you chose{' '}
-            <strong>{surpriseStance.name}</strong>.
+            {'You lean '}
+            <strong>{overallStance.name}</strong>
+            {' overall, but '}
+            {surpriseGroups.map((group, i) => {
+              const names = group.values.map(v => v.name)
+              const valuesStr = names.length === 1
+                ? names[0]
+                : names.slice(0, -1).join(', ') + ' and ' + names[names.length - 1]
+              return (
+                <span key={group.stance.id}>
+                  {i > 0 && ', and '}
+                  {'chose '}
+                  <strong>{group.stance.name}</strong>
+                  {' on '}
+                  <strong>{valuesStr}</strong>
+                </span>
+              )
+            })}
+            {'.'}
           </Text>
         </div>
       )}
