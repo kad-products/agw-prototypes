@@ -12,20 +12,29 @@ export default function ProfileIntro() {
           through each value area to fill in the details.
         </Text>
 
-        <Box
-          style={{
-            background: 'var(--gray-2)',
-            borderRadius: 'var(--radius-3)',
-            padding: 'var(--space-4)',
-          }}
-        >
-          <Text size="2" color="gray" style={{ lineHeight: '1.6' }}>
-            <strong style={{ color: 'var(--gray-12)' }}>What to notice:</strong>{' '}
-            Does knowing the framework up front help or get in the way? Does
+        <Heading size="4">Background</Heading>
+        
+        <Text as="p" size="3" style={{ lineHeight: '1.7' }}>
+          This is sort of the "boring and straightforward" approach. It is more or less a fancied up survey.  Not that it's a bad thing, but just a little dry.  Take that for what it's worth and see what you think.
+        </Text>
+
+        <Heading size="4">Questions to Ponder</Heading>
+        <ul style={{ margin: 0, paddingLeft: '1.25em' }}>
+          <li>Does knowing the framework up front help or get in the way?</li>
+          <li>Does
             going deeper one area at a time feel meaningful, or like you're just
-            picking from a list?
-          </Text>
-        </Box>
+            picking from a list?</li>
+        </ul>
+
+        <Heading size="4">Ideas for a full implementation</Heading>
+        
+        <Text as="p" size="3" style={{ lineHeight: '1.7' }}>
+          <ul style={{ margin: 0, paddingLeft: '1.25em' }}>
+          <li>Consider the "grouping" of values that are in use in other prototypes to keep it from initially feeling so intense and tedious.</li>
+          <li>Smoother UX and better wording for cleaner collection</li>
+          <li>Possibly explore the "result" page getting a treatment from the more "fun" prototypes like a character card or map.</li>
+        </ul>
+        </Text>
 
         <Box>
           <Button size="3" asChild>
