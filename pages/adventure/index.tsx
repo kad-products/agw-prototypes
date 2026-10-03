@@ -13,19 +13,27 @@ export default function AdventureIntro() {
           naming a stance directly.
         </Text>
 
-        <Box
-          style={{
-            background: 'var(--gray-2)',
-            borderRadius: 'var(--radius-3)',
-            padding: 'var(--space-4)',
-          }}
-        >
-          <Text size="2" color="gray" style={{ lineHeight: '1.6' }}>
-            <strong style={{ color: 'var(--gray-12)' }}>What to notice:</strong>{' '}
-            Does starting from a hot take feel grounding or limiting? Does
-            choosing your own path make the result feel more like yours?
-          </Text>
-        </Box>
+        <Heading size="4">Background</Heading>
+        
+        <Text as="p" size="3" style={{ lineHeight: '1.7' }}>
+          My intent here was to model this after a choose your own adventure book.  Each decision aligns to a stance on a value so we're building the same values profile map but through individual "hot takes" decisions.
+        </Text>
+
+        <Heading size="4">Questions to Ponder</Heading>
+        <ul style={{ margin: 0, paddingLeft: '1.25em' }}>
+          <li>Does starting from a hot take feel grounding or limiting?</li>
+          <li>Does
+            choosing your own path make the result feel more like yours?</li>
+        </ul>
+
+        <Heading size="4">Ideas for a full implementation</Heading>
+        
+        <Text as="p" size="3" style={{ lineHeight: '1.7' }}>
+          <ul style={{ margin: 0, paddingLeft: '1.25em' }}>
+          <li>Make the "explore" page a little more engaging and consider the groupings from other prototypes for a better balance of detail and summarization.</li>
+          <li>Possibly explore the "result" page getting a treatment from the more "fun" prototypes like a character card or map.</li>
+        </ul>
+        </Text>
 
         <Box>
           <Button size="3" asChild>

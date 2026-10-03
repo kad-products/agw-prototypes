@@ -531,8 +531,13 @@ function CheckIn({
             {scenario.choices.map(choice => (
               <button
                 key={choice.id}
+                type="button"
                 aria-pressed={currentChoiceId === choice.id}
-                onClick={() => onSetChoice(scenario.id, choice.id)}
+                onClick={() => {
+                  onSetChoice(scenario.id, choice.id)
+                  if (isLast) onFinishScenarios()
+                  else onNextScenario()
+                }}
                 style={choiceButtonStyle(currentChoiceId === choice.id)}
               >
                 {choice.text}
@@ -540,16 +545,6 @@ function CheckIn({
             ))}
           </Flex>
         </Flex>
-
-        <Box>
-          <Button
-            size="3"
-            disabled={!currentChoiceId}
-            onClick={isLast ? onFinishScenarios : onNextScenario}
-          >
-            {isLast ? content.checkin.scenarios.doneLabel : content.checkin.scenarios.nextLabel}
-          </Button>
-        </Box>
       </Flex>
     )
   }
@@ -920,7 +915,11 @@ function Specialist({
             <button
               key={choice.id}
               aria-pressed={currentChoiceId === choice.id}
-              onClick={() => onSetChoice(scenario.id, choice.id)}
+              onClick={() => {
+                onSetChoice(scenario.id, choice.id)
+                if (isLast) onFinishScenarios()
+                else onNextScenario()
+              }}
               style={choiceButtonStyle(currentChoiceId === choice.id)}
             >
               {choice.text}
@@ -928,17 +927,6 @@ function Specialist({
           ))}
         </Flex>
       </Flex>
-
-      {/* Navigation */}
-      <Box>
-        <Button
-          size="3"
-          disabled={!currentChoiceId}
-          onClick={isLast ? onFinishScenarios : onNextScenario}
-        >
-          {isLast ? content.specialist.finishLabel : content.specialist.nextLabel}
-        </Button>
-      </Box>
     </Flex>
   )
 }
