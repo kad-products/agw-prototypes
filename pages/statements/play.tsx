@@ -9,6 +9,7 @@ import {
   Heading,
   Separator,
   Slider,
+  Switch,
   Text,
 } from '@radix-ui/themes'
 import { Pencil2Icon } from '@radix-ui/react-icons'
@@ -601,6 +602,7 @@ function Reflect({
 }) {
   const [tab, setTab] = useState<'stance' | 'value'>('stance')
   const [editingStmt, setEditingStmt] = useState<StatementContent | null>(null)
+  const [showOnlyAgreed, setShowOnlyAgreed] = useState(true)
 
   const stanceScores = scoreStances(reactions, statements)
   const positiveTotal = stances.reduce((sum, s) => sum + Math.max(0, stanceScores[s.id] ?? 0), 0)
@@ -641,40 +643,53 @@ function Reflect({
 
         {tab === 'stance' && (
           <Flex direction="column" gap="6">
-            {/* Summary bars */}
-            {positiveTotal > 0 && (
-              <Flex direction="column" gap="3">
-                {stances.filter(stance => (stanceScores[stance.id] ?? 0) > 0).map(stance => {
-                  const score = stanceScores[stance.id] ?? 0
-                  const pct = Math.round((score / positiveTotal) * 100)
-                  return (
-                    <Flex key={stance.id} align="center" gap="3">
-                      <Flex align="center" gap="2" style={{ minWidth: 160 }}>
-                        {stance.emoji && <Text style={{ fontSize: 14 }}>{stance.emoji}</Text>}
-                        <Text size="2" weight="medium">{stance.name}</Text>
-                      </Flex>
-                      <div style={{ flex: 1, height: 8, background: 'var(--gray-3)', borderRadius: 4, overflow: 'hidden' }}>
+            {/* Summary bar */}
+            {positiveTotal > 0 && (() => {
+              const activeStances = stances.filter(s => (stanceScores[s.id] ?? 0) > 0)
+              return (
+                <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+                  {activeStances.map((stance, idx) => {
+                    const pct = ((stanceScores[stance.id] ?? 0) / positiveTotal) * 100
+                    const isFirst = idx === 0
+                    const isLast = idx === activeStances.length - 1
+                    return (
+                      <div key={stance.id} style={{ width: `${pct}%`, minWidth: 0 }}>
                         <div style={{
-                          width: `${pct}%`,
-                          height: '100%',
+                          height: 12,
                           background: stance.color ?? 'var(--accent-9)',
-                          borderRadius: 4,
+                          borderRadius: isFirst && isLast ? 6 : isFirst ? '6px 0 0 6px' : isLast ? '0 6px 6px 0' : 0,
                         }} />
+                        <div style={{ paddingTop: 5, overflow: 'visible', whiteSpace: 'nowrap' }}>
+                          {stance.emoji && <span style={{ fontSize: 12, marginRight: 3 }}>{stance.emoji}</span>}
+                          <span style={{ fontSize: 11, color: 'var(--gray-11)' }}>{stance.name}</span>
+                          <span style={{ fontSize: 11, color: 'var(--gray-9)', marginLeft: 4, fontVariantNumeric: 'tabular-nums' }}>{Math.round(pct)}%</span>
+                        </div>
                       </div>
-                      <Text size="1" color="gray" style={{ minWidth: 28, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
-                        {pct}%
-                      </Text>
-                    </Flex>
-                  )
-                })}
-              </Flex>
-            )}
+                    )
+                  })}
+                </div>
+              )
+            })()}
 
             <Separator size="4" />
 
+            <Flex align="center" gap="2" style={{justifyContent: 'flex-end'}}>
+              <Switch
+                size="1"
+                checked={showOnlyAgreed}
+                onCheckedChange={setShowOnlyAgreed}
+                id="show-only-agreed"
+              />
+              <Text as="label" htmlFor="show-only-agreed" size="2" color="gray" style={{ cursor: 'pointer' }}>
+                Show only reacted
+              </Text>
+            </Flex>
+
             {/* Per-stance detail sections */}
             {stances.map(stance => {
-              const stmts = statements.filter(s => s.stanceId === stance.id)
+              const stmts = statements
+                .filter(s => s.stanceId === stance.id)
+                .filter(s => !showOnlyAgreed || reactions[s.id] === 'agree' || reactions[s.id] === 'disagree')
               if (!stmts.length) return null
               return (
                 <Flex key={stance.id} direction="column" gap="2">
@@ -700,7 +715,9 @@ function Reflect({
         {tab === 'value' && (
           <Flex direction="column" gap="6">
             {values.map(value => {
-              const stmts = statements.filter(s => s.valueId === value.id)
+              const stmts = statements
+                .filter(s => s.valueId === value.id)
+                .filter(s => !showOnlyAgreed || reactions[s.id] === 'agree' || reactions[s.id] === 'disagree')
               if (!stmts.length) return null
               return (
                 <Flex key={value.id} direction="column" gap="2">
