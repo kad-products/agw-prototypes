@@ -367,7 +367,7 @@ function SilhouetteSVG() {
       width={130}
       height={480}
       viewBox="0 0 130 480"
-      style={{ position: 'absolute', left: 335, top: 20, pointerEvents: 'none' }}
+      style={{ position: 'absolute', left: 335, top: 140, pointerEvents: 'none' }}
       aria-hidden="true"
     >
       <circle cx={65} cy={50} r={38} fill={fill} />
@@ -474,6 +474,7 @@ function ValueGroupNode({
         return (
           <button
             key={stance.id}
+            type="button"
             title={stance.name}
             onMouseEnter={() => setHoveredStanceId(stance.id)}
             onMouseLeave={() => setHoveredStanceId(null)}
@@ -519,7 +520,7 @@ function ValueGroupNode({
           alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center',
-          padding: '0 8px',
+          padding: '0',
           zIndex: 1,
           pointerEvents: 'none',
         }}
@@ -566,12 +567,12 @@ function ValueGroupNode({
 
 // Groups: [left-top, right-top, left-mid, right-mid, left-bot, right-bot]
 const NODE_POSITIONS: Array<{ cx: number; cy: number; labelSide: 'left' | 'right' }> = [
-  { cx: 85,  cy: 100, labelSide: 'right' },
-  { cx: 715, cy: 100, labelSide: 'left'  },
-  { cx: 85,  cy: 260, labelSide: 'right' },
-  { cx: 715, cy: 260, labelSide: 'left'  },
-  { cx: 85,  cy: 420, labelSide: 'right' },
-  { cx: 715, cy: 420, labelSide: 'left'  },
+  { cx: 200,  cy: 80, labelSide: 'right' },
+  { cx: 600, cy: 80, labelSide: 'left'  },
+  { cx: 85,  cy: 380, labelSide: 'right' },
+  { cx: 715, cy: 380, labelSide: 'left'  },
+  { cx: 200,  cy: 680, labelSide: 'right' },
+  { cx: 600, cy: 680, labelSide: 'left'  },
 ]
 
 function AttributeScreen({
@@ -628,7 +629,7 @@ function AttributeScreen({
       </Text>
 
       {/* Builder area */}
-      <div style={{ position: 'relative', width: 800, height: 520, margin: '0 auto' }}>
+      <div style={{ position: 'relative', width: 800, height: 800, margin: '0 auto' }}>
         <SilhouetteSVG />
         {content.attributeGroups.map((group, i) => {
           const pos = NODE_POSITIONS[i]
