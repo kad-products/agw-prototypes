@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import type { GetStaticProps } from 'next'
 import { Container } from '@radix-ui/themes'
 import { loadStances, loadValues, loadConceptContent } from '@/lib/content'
@@ -34,8 +34,17 @@ const CANVAS_H = 580
 const CENTER_X = 450
 const CENTER_Y = 290
 const ZOOM_N = 3    // scale factor when zoomed into an asteroid
-const RING_R = 115  // px from canvas center to stance chip center (ring view)
-const CHIP_R = 19   // stance chip half-diameter
+
+// Explicit card positions for the zoomed stance picker (7 stances, clockwise from top)
+const STANCE_POSITIONS: Array<{ cx: number; cy: number }> = [
+  { cx: 450, cy:  98 },  // top
+  { cx: 677, cy: 203 },  // upper-right
+  { cx: 696, cy: 336 },  // right
+  { cx: 619, cy: 457 },  // lower-right
+  { cx: 281, cy: 457 },  // lower-left
+  { cx: 204, cy: 336 },  // left
+  { cx: 223, cy: 203 },  // upper-left
+]
 
 const ASTEROID_RING: Record<string, { cx: number; cy: number; r: number }> = {
   'value-a': { cx: 450, cy: 100, r: 22 },
@@ -186,6 +195,17 @@ export default function MapPage({ stances, values, content }: Props) {
     ? values.find(v => v.id === state.activeValueId) ?? null
     : null
 
+  // Delay stance cards until zoom animation completes (450ms)
+  const [ringVisible, setRingVisible] = useState(false)
+  useEffect(() => {
+    if (state.activeValueId) {
+      const t = setTimeout(() => setRingVisible(true), 460)
+      return () => clearTimeout(t)
+    } else {
+      setRingVisible(false)
+    }
+  }, [state.activeValueId])
+
   return (
     <Container size="3" px="4" py="8">
       <div
@@ -264,7 +284,7 @@ export default function MapPage({ stances, values, content }: Props) {
                 r={pos.r}
                 visible={state.phase === 'values'}
                 delay={180 + i * 28}
-                showStartHint={i === 0 && setCount === 0}
+                showStartHint={i === 0 && setCount === 0 && !state.activeValueId}
                 onActivate={() => dispatch({ type: 'SET_ACTIVE_VALUE', valueId: value.id })}
               />
             )
@@ -299,6 +319,49 @@ export default function MapPage({ stances, values, content }: Props) {
           </div>
         )}
 
+        {/* Color legend — bottom of zoomed-out map view */}
+        {state.phase === 'values' && !state.activeValueId && (
+          <div
+            style={{
+              position: 'absolute',
+              bottom: 12,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              display: 'flex',
+              gap: 10,
+              alignItems: 'center',
+              flexWrap: 'nowrap',
+              pointerEvents: 'none',
+            }}
+          >
+            {stances.map(stance => (
+              <div key={stance.id} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                <div
+                  style={{
+                    width: 12,
+                    height: 12,
+                    borderRadius: '50%',
+                    background: stance.color ?? '#888',
+                    flexShrink: 0,
+                    boxShadow: `0 0 4px ${hexToRgba(stance.color ?? '#888', 0.6)}`,
+                  }}
+                />
+                <span
+                  style={{
+                    fontSize: 12,
+                    color: 'rgba(255,255,255,0.58)',
+                    letterSpacing: '0.07em',
+                    textTransform: 'uppercase',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {stance.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+
         {/* Dim overlay when zoomed into an asteroid */}
         {state.activeValueId && (
           <div
@@ -312,8 +375,8 @@ export default function MapPage({ stances, values, content }: Props) {
           />
         )}
 
-        {/* Stance ring — appears at canvas center, not inside the zoom layer */}
-        {state.activeValueId && activeValue && (
+        {/* Stance cards — appear after zoom animation completes */}
+        {ringVisible && activeValue && (
           <StanceRing
             value={activeValue}
             stances={stances}
@@ -424,7 +487,6 @@ function HotTakeView({
                 transition: 'background 0.15s ease, box-shadow 0.15s ease',
               }}
             >
-              <span style={{ fontSize: 15 }}>{stance.emoji}</span>
               <span>{stance.name}</span>
             </button>
           )
@@ -447,17 +509,17 @@ function HotTakeView({
       >
         <div
           style={{
-            background: 'rgba(255,255,255,0.09)',
-            border: '1px solid rgba(255,255,255,0.14)',
+            background: hexToRgba(hoveredStance?.color ?? '#888', 0.14),
+            border: `1px solid ${hexToRgba(hoveredStance?.color ?? '#888', 0.55)}`,
             borderRadius: 8,
             padding: '8px 18px',
-            boxShadow: '0 0 28px rgba(255,255,255,0.12), 0 0 70px rgba(255,255,255,0.05)',
+            boxShadow: `0 0 28px ${hexToRgba(hoveredStance?.color ?? '#888', 0.12)}, 0 0 70px ${hexToRgba(hoveredStance?.color ?? '#888', 0.05)}`,
             textAlign: 'center',
           }}
         >
           <span
             style={{
-              fontSize: 12,
+              fontSize: 14,
               color: 'rgba(255,255,255,0.82)',
               fontStyle: 'italic',
               lineHeight: 1.5,
@@ -506,7 +568,6 @@ function CenterNode({
         pointerEvents: 'none',
       }}
     >
-      <span style={{ fontSize: 26, lineHeight: 1 }}>{stance?.emoji}</span>
       <span
         style={{
           fontSize: 11,
@@ -643,9 +704,12 @@ function AsteroidNode({
 }
 
 // ─── Stance ring (zoomed value picker) ───────────────────────────────────────
-// Rendered in the fixed UI layer. The active asteroid zooms to canvas center,
-// so we render stance chips in a ring at RING_R px from that center point.
-// Hovering a chip shows the stance name + short description at the canvas bottom.
+// Rendered in the fixed UI layer after the 450ms zoom animation completes.
+// Stance cards are arranged in a ring at RING_R px from canvas center and show
+// name + emoji directly — no hover required.
+
+const CARD_W = 210
+const CARD_H = 76  // max that keeps top/bottom cards inside the canvas at RING_R=252
 
 function StanceRing({
   value,
@@ -660,134 +724,111 @@ function StanceRing({
   stanceOnValue?: Record<string, Record<string, string>>
   onSelect: (stanceId: string | null) => void
 }) {
-  const [hoveredId, setHoveredId] = useState<string | null>(null)
-  const hoveredStance = hoveredId ? stances.find(s => s.id === hoveredId) ?? null : null
-  const hoveredDescription = hoveredStance
-    ? (stanceOnValue?.[hoveredStance.id]?.[value.id] ?? hoveredStance.short)
-    : null
-
   return (
     <>
-      {/* Value name — centered over the zoomed asteroid body */}
+      {/* Value name — centered on canvas (where the asteroid body is) */}
       <div
         style={{
           position: 'absolute',
-          left: 0,
-          right: 0,
-          top: CENTER_Y - 7,
-          textAlign: 'center',
+          inset: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           pointerEvents: 'none',
           zIndex: 21,
         }}
       >
         <span
           style={{
-            fontSize: 10,
+            fontSize: 15,
             fontWeight: 700,
-            letterSpacing: '0.1em',
+            letterSpacing: '0.07em',
             textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.65)',
+            color: 'rgba(255,255,255,0.9)',
+            textShadow: '0 1px 8px rgba(0,0,0,0.9)',
+            textAlign: 'center',
+            maxWidth: 110,
+            lineHeight: 1.25,
           }}
         >
           {value.name}
         </span>
       </div>
 
-      {/* Stance chips in a ring around canvas center */}
+      {/* Stance cards in a ring around canvas center */}
       {stances.map((stance, i) => {
-        const angle = (2 * Math.PI * i) / stances.length - Math.PI / 2
-        const cx = CENTER_X + RING_R * Math.cos(angle)
-        const cy = CENTER_Y + RING_R * Math.sin(angle)
+        const pos = STANCE_POSITIONS[i]
+        if (!pos) return null
+        const { cx, cy } = pos
         const isSelected = selectedStanceId === stance.id
-        const isHovered = hoveredId === stance.id
         const color = stance.color ?? '#888'
+        const description = stanceOnValue?.[stance.id]?.[value.id] ?? stance.short
         return (
           <button
             key={stance.id}
-            aria-label={stance.name}
+            type="button"
+            aria-label={isSelected ? `${stance.name} (selected)` : stance.name}
+            aria-pressed={isSelected}
             onClick={e => { e.stopPropagation(); onSelect(isSelected ? null : stance.id) }}
-            onMouseEnter={() => setHoveredId(stance.id)}
-            onMouseLeave={() => setHoveredId(null)}
             style={{
               position: 'absolute',
-              left: cx - CHIP_R,
-              top: cy - CHIP_R,
-              width: CHIP_R * 2,
-              height: CHIP_R * 2,
-              borderRadius: '50%',
-              border: `2px solid ${hexToRgba(color, isSelected || isHovered ? 0.9 : 0.45)}`,
+              left: cx - CARD_W / 2,
+              top: cy - CARD_H / 2,
+              width: CARD_W,
+              height: CARD_H,
+              borderRadius: 8,
+              border: `2px solid ${hexToRgba(color, isSelected ? 0.9 : 0.5)}`,
               background: isSelected
-                ? hexToRgba(color, 0.8)
-                : isHovered
-                ? hexToRgba(color, 0.35)
-                : hexToRgba(color, 0.16),
+                ? hexToRgba(color, 0.72)
+                : hexToRgba(color, 0.18),
               boxShadow: isSelected
-                ? `0 0 16px ${hexToRgba(color, 0.6)}, 0 0 5px ${hexToRgba(color, 0.35)}`
-                : isHovered
-                ? `0 0 12px ${hexToRgba(color, 0.35)}`
-                : 'none',
+                ? `0 0 20px ${hexToRgba(color, 0.55)}, 0 0 6px ${hexToRgba(color, 0.35)}`
+                : `0 0 8px ${hexToRgba(color, 0.15)}`,
               cursor: 'pointer',
               display: 'flex',
+              flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: 16,
-              transition: 'background 150ms ease, box-shadow 150ms ease, border-color 150ms ease',
+              gap: 4,
               zIndex: 20,
+              transition: 'background 150ms ease, box-shadow 150ms ease, border-color 150ms ease',
+              padding: '8px 10px',
             }}
           >
-            {stance.emoji}
+            <span
+              style={{
+                fontSize: 12,
+                fontWeight: 700,
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                color: isSelected ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.78)',
+                lineHeight: 1,
+                textAlign: 'center',
+                flexShrink: 0,
+              }}
+            >
+              {stance.name}
+            </span>
+            {description && (
+              <span
+                style={{
+                  fontSize: 11,
+                  color: isSelected ? 'rgba(255,255,255,0.82)' : 'rgba(255,255,255,0.48)',
+                  fontStyle: 'italic',
+                  lineHeight: 1.35,
+                  textAlign: 'center',
+                  overflow: 'hidden',
+                  display: '-webkit-box',
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: 'vertical',
+                }}
+              >
+                {description}
+              </span>
+            )}
           </button>
         )
       })}
-
-      {/* Stance name + description on hover — ethereal pill at canvas bottom */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: 22,
-          left: 60,
-          right: 60,
-          display: 'flex',
-          justifyContent: 'center',
-          opacity: hoveredStance ? 1 : 0,
-          transition: 'opacity 180ms ease',
-          pointerEvents: 'none',
-          zIndex: 21,
-        }}
-      >
-        <div
-          style={{
-            background: 'rgba(255,255,255,0.09)',
-            border: '1px solid rgba(255,255,255,0.14)',
-            borderRadius: 8,
-            padding: '8px 18px',
-            boxShadow: '0 0 28px rgba(255,255,255,0.12), 0 0 70px rgba(255,255,255,0.05)',
-            textAlign: 'center',
-          }}
-        >
-          <div
-            style={{
-              fontSize: 11,
-              fontWeight: 700,
-              color: hexToRgba(hoveredStance?.color ?? '#888', 0.9),
-              marginBottom: 3,
-              letterSpacing: '0.05em',
-            }}
-          >
-            {hoveredStance?.name}
-          </div>
-          <div
-            style={{
-              fontSize: 12,
-              color: 'rgba(255,255,255,0.75)',
-              fontStyle: 'italic',
-              lineHeight: 1.45,
-            }}
-          >
-            {hoveredDescription}
-          </div>
-        </div>
-      </div>
     </>
   )
 }
